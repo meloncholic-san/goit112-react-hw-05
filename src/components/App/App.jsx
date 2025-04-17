@@ -4,11 +4,12 @@ import AppHeader from '../AppHeader/AppHeader';
 import NotFoundPage from '../../pages/NotFoundPage';
 import css from './App.module.css';
 
-const UsersPage = lazy(() => import('../../pages/UsersPage'));
-const UserDetailsPage = lazy(() => import('../../pages/UserDetailsPage'));
+
 const HomePage = lazy(() => import('../../pages/HomePage'));
-const UserPosts = lazy(() => import('../UserPosts/UserPosts'));
-const UserTodos = lazy(() => import('../UserTodos/UserTodos'));
+const MoviesPage = lazy(() => import('../../pages/MoviesPage'))
+const MovieDetailsPage = lazy(() => import('../../pages/MovieDetailsPage'))
+const MovieCast = lazy(() => import('../MovieCast/MovieCast'))
+const MovieReview = lazy(() => import('../MovieReview/MovieReview'))
 
 export default function App() {
   return (
@@ -24,10 +25,10 @@ export default function App() {
       >
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/dashboard" element={<UsersPage />} />
-          <Route path="/dashboard/:userId" element={<UserDetailsPage />}>
-            <Route path="posts" element={<UserPosts />} />
-            <Route path="todos" element={<UserTodos />} />
+          <Route path='/movies'element = {<MoviesPage />}/>
+          <Route path='/movies/:movieId' element= {<MovieDetailsPage />}>
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="review" element={<MovieReview />} />
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
